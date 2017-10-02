@@ -1,0 +1,2 @@
+urbandictionary
+discord.py
