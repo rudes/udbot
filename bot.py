@@ -40,8 +40,9 @@ async def ud_handler(m):
     await ud_response(m, defs[0])
 
 async def ud_random_handler(m):
-    logging.info('ud_random_handler,{},{},{},success'.format(m.author.name, m.server.name, search))
-    await ud_response(m, ud.random()[0])
+    d = ud.random()[0]
+    logging.info('ud_random_handler,{},{},{},success'.format(m.author.name, m.server.name, d.word))
+    await ud_response(m, d)
 
 async def ud_response(m, d):
     ud_url = "http://www.urbandictionary.com/define.php?term="+d.word
