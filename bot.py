@@ -7,7 +7,7 @@ from random import randint
 prefix = "!"
 client = discord.Client()
 logging.basicConfig(format="%(asctime)s %(name)s:%(levelname)-8s %(message)s",
-        filename="/var/log/udbot.log", level=logging.DEBUG)
+        filename="/var/log/udbot.log", level=logging.INFO)
 
 @client.event
 async def on_ready():
