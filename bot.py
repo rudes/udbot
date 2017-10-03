@@ -19,10 +19,10 @@ async def on_message(m):
     if m.author == client.user:
         return
     if m.content.startswith(prefix+'ud'):
-        await ud_dict(m)
+        await ud_handler(m)
         return
 
-async def ud_dict(m):
+async def ud_handler(m):
     mess = m.content.split(" ")
     search = " ".join(mess[1:])
     defs = ud.define(search)
@@ -30,6 +30,7 @@ async def ud_dict(m):
     if len(mess) > 2:
         ud_url = "http://www.urbandictionary.com/define.php?term="+"+".join(search.split(" "))
     if not defs:
+        logging.info('ud_handler,{},{},{},failed'.format(m.author.name, m.server.name, search))
         await client.send_message(m.channel, "I got nothing")
         return
     em = discord.Embed()
@@ -40,6 +41,7 @@ async def ud_dict(m):
         em.add_field(name="Example", value=defs[0].example, inline=False)
     em.add_field(name="Up Votes", value=str(defs[0].upvotes))
     em.add_field(name="Down Votes", value=str(defs[0].downvotes))
+    logging.info('ud_handler,{},{},{},success'.format(m.author.name, m.server.name, search))
     await client.send_message(m.channel, embed=em)
 
 client.run(str(os.environ['DISCORD_BOTKEY']))
