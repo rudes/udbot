@@ -38,7 +38,7 @@ async def ud_dict(m):
     em.description = defs[0].definition
     if defs[0].example:
         em.add_field(name="Example", value=defs[0].example)
-    em.add_field(name="Up Votes", value=str(defs[0].upvotes), inline=True)
+    em.add_field(name="Up Votes", value=str(defs[0].upvotes))
     em.add_field(name="Down Votes", value=str(defs[0].downvotes), inline=True)
     await client.send_message(m.channel, embed=em)
 
