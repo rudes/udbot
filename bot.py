@@ -37,13 +37,13 @@ async def ud_handler(m):
     if len(mess) > 2:
         ud_url = "http://www.urbandictionary.com/define.php?term="+"+".join(search.split(" "))
     logging.info('ud_handler,{},{},{},success'.format(m.author.name, m.server.name, search))
-    await ud_response(defs[0])
+    await ud_response(m, defs[0])
 
 async def ud_random_handler(m):
     logging.info('ud_random_handler,{},{},{},success'.format(m.author.name, m.server.name, search))
-    await ud_response(ud.random()[0])
+    await ud_response(m, ud.random()[0])
 
-async def ud_response(d):
+async def ud_response(m, d):
     ud_url = "http://www.urbandictionary.com/define.php?term="+d.word
     if len(d.word.split(" ")) > 1:
         ud_url = "http://www.urbandictionary.com/define.php?term="+"+".join(d.word.split(" "))
