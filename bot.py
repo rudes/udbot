@@ -45,7 +45,7 @@ async def ud_random_handler(m):
 
 async def ud_response(d):
     ud_url = "http://www.urbandictionary.com/define.php?term="+d.word
-    if len(mess) > 2:
+    if len(d.word.split(" ")) > 1:
         ud_url = "http://www.urbandictionary.com/define.php?term="+"+".join(d.word.split(" "))
     em = discord.Embed()
     em.color = discord.Colour(randint(0, 16777215))
