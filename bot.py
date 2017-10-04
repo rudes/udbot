@@ -29,19 +29,29 @@ async def ud_handler(m):
     mess = m.content.split(" ")
     search = " ".join(mess[1:])
     defs = ud.define(search)
+    location = None
+    if m.channel.is_private:
+        location = "priv-"+m.author.name
+    else:
+        location = m.server.name
     if not defs:
-        logging.info('ud_handler,{},{},{},failed'.format(m.author.name, m.server.name, search))
+        logging.info('ud_handler,{},{},{},failed'.format(m.author.name, location, search))
         await client.send_message(m.channel, "I got nothing")
         return
     ud_url = "http://www.urbandictionary.com/define.php?term="+search
     if len(mess) > 2:
         ud_url = "http://www.urbandictionary.com/define.php?term="+"+".join(search.split(" "))
-    logging.info('ud_handler,{},{},{},success'.format(m.author.name, m.server.name, search))
+    logging.info('ud_handler,{},{},{},success'.format(m.author.name, location, search))
     await ud_response(m, defs[0])
 
 async def ud_random_handler(m):
+    location = None
+    if m.channel.is_private:
+        location = "priv-"+m.author.name
+    else:
+        location = m.server.name
     d = ud.random()[0]
-    logging.info('ud_random_handler,{},{},{},success'.format(m.author.name, m.server.name, d.word))
+    logging.info('ud_random_handler,{},{},{},success'.format(m.author.name, location, d.word))
     await ud_response(m, d)
 
 async def ud_response(m, d):
