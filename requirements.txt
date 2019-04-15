@@ -1,2 +1,2 @@
--e git+ssh://git@github.com:bocong/urbandictionary-py.git
-discord.py=0.16.6
+-e git://github.com/bocong/urbandictionary-py.git#egg=urbandictionary
+discord.py==0.16.6
