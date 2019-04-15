@@ -1,2 +1,2 @@
-urbandictionary
-discord.py
+-e git+ssh://git@github.com:bocong/urbandictionary-py.git
+discord.py=0.16.6
