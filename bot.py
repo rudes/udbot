@@ -43,7 +43,7 @@ async def ud_handler(m):
 
 async def ud_random_handler(m):
     location = None
-    if m.guild:
+    if not m.guild:
         location = "priv-"+m.author.name
     else:
         location = m.guild.name
