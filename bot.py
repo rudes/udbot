@@ -43,10 +43,10 @@ async def ud_handler(m):
 
 async def ud_random_handler(m):
     location = None
-    if m.channel.is_private:
+    if m.guild:
         location = "priv-"+m.author.name
     else:
-        location = m.server.name
+        location = m.guild.name
     d = ud.random()[0]
     logging.info('ud_random_handler,{},{},{},success'.format(m.author.name, location, d.word))
     await ud_response(m, d)
